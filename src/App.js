@@ -14,8 +14,18 @@ export default function Form() {
   });
   const [page, setPage] = useState(0);
   function handleSubmit() {
-    setPage(page + 1);
+    if (page < 2) {
+      setPage(page + 1);
+    } else {
+      displayFormDataAsJSON();
+    }
   }
+  const displayFormDataAsJSON = () => {
+    const jsonData = JSON.stringify(formData, null, 2);
+
+    alert(jsonData);
+  };
+
   const conditionalComponent = () => {
     switch (page) {
       case 0:
