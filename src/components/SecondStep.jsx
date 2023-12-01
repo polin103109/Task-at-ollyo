@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/secondform.css";
 import "../styles/firstform.css";
 function SecondStep({ formData, setFormData }) {
+  const degreeOptions = ["Bachelor's", "Master's", "PhD", "Diploma", "Other"];
   return (
     <>
       <div>
@@ -11,8 +12,7 @@ function SecondStep({ formData, setFormData }) {
         <label>
           <b>Highest Degree</b>
         </label>
-        <input
-          type="text"
+        <select
           onChange={(e) => {
             setFormData({
               ...formData,
@@ -20,9 +20,15 @@ function SecondStep({ formData, setFormData }) {
             });
           }}
           value={formData.degree}
-          placeholder="Enter Degree"
           required
-        />
+        >
+          <option value="">Select Degree</option>
+          {degreeOptions.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
 
         <label htmlFor="fos">
           <b>Field of Study</b>
