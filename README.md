@@ -35,7 +35,7 @@ cd ollyotaskfolder/
 
 ## Live Demo
 
-Hosted the gallery on [https://taskatollyo.vercel.app/](https://taskatollyo.vercel.app/) for a live preview.
+Hosted the gallery on [https://ollyoo.vercel.app/](https://ollyoo.vercel.app/) for a live preview.
 
 # Author
 
