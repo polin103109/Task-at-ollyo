@@ -9,7 +9,7 @@ export default function Form() {
     email: "",
     phonenumber: "",
     address: "",
-    hobbies: "",
+    hobbies: [],
     images: [],
   });
   const [page, setPage] = useState(0);

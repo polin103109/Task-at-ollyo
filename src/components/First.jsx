@@ -2,8 +2,8 @@ import { useState } from "react";
 import { ImageIcon } from "../Icons";
 import "../styles/firstform.css";
 function First({ formData, setFormData }) {
-  const [hobbies, setHobbies] = useState([""]);
-  const [images, setImages] = useState([""]);
+  const [hobbies, setHobbies] = useState(formData.hobbies || [""]);
+  const [images, setImages] = useState(formData.images || []);
   const isEmailValid = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
@@ -24,17 +24,25 @@ function First({ formData, setFormData }) {
     const newHobbies = [...hobbies];
     newHobbies[index] = e.target.value;
     setHobbies(newHobbies);
+    setFormData({
+      ...formData,
+      hobbies: newHobbies,
+    });
   }
+
   function handleImageChange(e) {
     const fileList = e.target.files;
     const imagesArray = Array.from(fileList);
 
-    setImages([...images, ...imagesArray]);
-
     const imageUrls = imagesArray.map((image) => URL.createObjectURL(image));
+
+    const updatedImages = [...images, ...imageUrls];
+
+    setImages(updatedImages);
+
     setFormData({
       ...formData,
-      images: [...formData.images, ...imageUrls],
+      images: updatedImages,
     });
   }
 
@@ -68,6 +76,7 @@ function First({ formData, setFormData }) {
               email: e.target.value,
             });
           }}
+          placeholder="example@gmail.com"
           value={formData.email}
           id="userEmail"
           required
@@ -88,6 +97,7 @@ function First({ formData, setFormData }) {
             });
           }}
           value={formData.phonenumber}
+          placeholder="+880"
           id="userAddress"
           required
         ></input>
@@ -119,7 +129,12 @@ function First({ formData, setFormData }) {
         {hobbies.map((hobby, index) => (
           <div key={index}>
             <label>
-              <input onChange={handleChangeHobby} id="userHobbies" required />
+              <input
+                onChange={(e) => handleChangeHobby(e, index)}
+                value={hobby}
+                id={`userHobbies_${index}`}
+                required
+              />
             </label>
           </div>
         ))}
@@ -142,11 +157,15 @@ function First({ formData, setFormData }) {
       <br />
       <span>Image</span>
       <div className="upload-image">
+        {formData.images.map((imageUrl, index) => (
+          <div key={index}>
+            <img src={imageUrl} alt="" />
+          </div>
+        ))}
         <label>
           <ImageIcon />
           <br />
           <span className="add-image"> Upload</span>
-
           <input
             onChange={handleImageChange}
             className="custom-input hidden"
@@ -157,6 +176,7 @@ function First({ formData, setFormData }) {
           />
         </label>
       </div>
+
       <br />
     </div>
   );
