@@ -9,8 +9,16 @@ export default function Form() {
     email: "",
     phonenumber: "",
     address: "",
+    degree: "",
+    FOS: "",
     hobbies: [],
     images: [],
+    institution: "",
+    graduation: "",
+    company: "",
+    position: "",
+    duration: "",
+    description: "",
   });
   const [page, setPage] = useState(0);
   function handleSubmit() {

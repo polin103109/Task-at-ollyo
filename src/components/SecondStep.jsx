@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/secondform.css";
 import "../styles/firstform.css";
-function SecondStep() {
+function SecondStep({ formData, setFormData }) {
   return (
     <>
       <div>
@@ -11,12 +11,35 @@ function SecondStep() {
         <label>
           <b>Highest Degree</b>
         </label>
-        <input type="text" placeholder="Enter Degree" required />
+        <input
+          type="text"
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              degree: e.target.value,
+            });
+          }}
+          value={formData.degree}
+          placeholder="Enter Degree"
+          required
+        />
 
         <label htmlFor="fos">
           <b>Field of Study</b>
         </label>
-        <input type="text" id="fos" placeholder="Enter FOS" required />
+        <input
+          type="text"
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              FOS: e.target.value,
+            });
+          }}
+          value={formData.FOS}
+          id="fos"
+          placeholder="Enter FOS"
+          required
+        />
 
         <label htmlFor="institution">
           <b>Institution Name</b>
@@ -24,6 +47,13 @@ function SecondStep() {
         <input
           type="text"
           id="institution"
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              institution: e.target.value,
+            });
+          }}
+          value={formData.institution}
           placeholder="Institution"
           required
         />
@@ -34,6 +64,13 @@ function SecondStep() {
         <input
           type="text"
           id="gradYear"
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              graduation: e.target.value,
+            });
+          }}
+          value={formData.graduation}
           placeholder="Graduation Year"
           required
         />

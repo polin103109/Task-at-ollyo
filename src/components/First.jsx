@@ -52,7 +52,7 @@ function First({ formData, setFormData }) {
       <span>Please fill out this form with the required information</span>
       <br />
       <label>
-        Name
+        <b>Name</b>
         <input
           type="text"
           onChange={(e) => {
@@ -67,7 +67,7 @@ function First({ formData, setFormData }) {
         />
       </label>
       <label for="Email">
-        Email{" "}
+        <b>Email</b>
         <input
           type="email"
           onChange={(e) => {
@@ -87,7 +87,7 @@ function First({ formData, setFormData }) {
         <br />
       </label>
       <label for="Phone">
-        Phone Number
+        <b>Phone Number</b>
         <input
           type="text"
           onChange={(e) => {
@@ -108,7 +108,7 @@ function First({ formData, setFormData }) {
       </label>
       <br />
       <label for="Address">
-        Address
+        <b>Address</b>
         <input
           type="text"
           onChange={(e) => {
@@ -125,11 +125,12 @@ function First({ formData, setFormData }) {
       </label>
       <br />
       <label>
-        Hobbies
+        <b> Hobbies</b>
         {hobbies.map((hobby, index) => (
           <div key={index}>
             <label>
               <input
+                type="text"
                 onChange={(e) => handleChangeHobby(e, index)}
                 value={hobby}
                 id={`userHobbies_${index}`}
@@ -155,7 +156,7 @@ function First({ formData, setFormData }) {
       </label>
       <br />
       <br />
-      <span>Image</span>
+      <b>Image</b>
       <div className="upload-image">
         {formData.images.map((imageUrl, index) => (
           <div key={index}>

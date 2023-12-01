@@ -21,11 +21,6 @@ input {
   background: #f1f1f1;
 }
 
-input:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
 h3 {
   text-align: center;
   margin-bottom: 20px;
@@ -40,15 +35,14 @@ label {
   display: block;
   margin-bottom: 10px;
 }
-
-input[type="text"],
-input[type="email"] {
+input {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #f0f0f0;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  background: #f1f1f1;
 }
 
 .hobbiesButton {
@@ -75,13 +69,34 @@ button {
 }
 .upload-image {
   display: flex;
+
+  flex-wrap: wrap;
+  gap: 10px;
+
   align-items: center;
   justify-content: center;
   background-color: #f0f0f0;
-  width: 300px;
   border: 1px solid #ccc;
+  height: 300px;
+}
+.upload-image img {
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: cover;
+}
+
+.upload-image > div {
+  position: relative;
+}
+.custom-input {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
 }
 .hobbyButton {
   display: flex;
   gap: 10px;
+}
+.add-image {
+  display: none;
 }
